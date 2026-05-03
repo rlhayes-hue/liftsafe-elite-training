@@ -1,39 +1,48 @@
 /* =========================
-   PROGRAM SECTION
+   SECTION WRAPPER
 ========================= */
-
 .programs {
   max-width: 1100px;
   margin: auto;
-  padding: 20px;
+  padding: 16px;
 }
 
 .programs h2 {
   text-align: center;
   color: #ff7a00;
   margin-bottom: 20px;
+  font-size: 1.4rem;
 }
 
 /* =========================
-   GRID CARDS
+   MOBILE FIRST GRID
 ========================= */
-
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 15px;
+  gap: 16px;
 }
 
-/* CARD STYLE */
+/* =========================
+   CARD DESIGN (TAP FRIENDLY)
+========================= */
 .card {
-  background: white;
-  padding: 16px;
+  background: #fff;
+  padding: 18px;
   border-radius: 14px;
+
+  /* tap safety */
+  min-height: 120px;
+  cursor: pointer;
+
+  /* soft UI */
   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 
-  /* TAP FRIENDLY */
-  min-height: 44px;
+  /* smooth interaction */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* improves touch behavior */
+  touch-action: manipulation;
 }
 
 .card h3 {
@@ -41,10 +50,21 @@
   color: #ff7a00;
 }
 
-/* HOVER EFFECT (DESKTOP ONLY FEEL) */
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+/* =========================
+   TOUCH + HOVER BEHAVIOR
+========================= */
+
+/* hover only for devices that support it */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+}
+
+/* tap feedback */
+.card:active {
+  transform: scale(0.98);
 }
 
 /* =========================
@@ -53,6 +73,10 @@
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .programs h2 {
+    font-size: 1.8rem;
   }
 }
 
